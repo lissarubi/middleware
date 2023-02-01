@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/index.ts",
-    "test": "jest --coverage NODE_ENV = 'test'",
+    "test": "jest --coverage --detectOpenHandles NODE_ENV = 'test'",
     "test:unit": "jest src"
   },
   "author": "Lissa Ferreira",
