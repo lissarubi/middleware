@@ -27,7 +27,6 @@ describe("Test UserService", () => {
     const userService = new UserService();
     const user: User | null = await userService.getById("999");
 
-    console.log(user);
     expect(user).toEqual(null);
   });
 });

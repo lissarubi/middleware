@@ -27,7 +27,6 @@ describe("Test ProductService", () => {
     const productService = new ProductService();
     const product: Product | null = await productService.getById("999");
 
-    console.log(product);
     expect(product).toEqual(null);
   });
 });
