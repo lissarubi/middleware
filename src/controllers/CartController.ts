@@ -43,7 +43,7 @@ class CartController {
               // calcular preço de um produto baseado em uma porcentagem, ex: 10% de 100 é 10.
               calculatePercentage(product.price, user.tax).toFixed(2)
             );
-            totalPrice += product.price;
+            totalPrice += product.priceWithTax;
 
             productsWithTax.push(product);
           }
