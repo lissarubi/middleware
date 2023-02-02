@@ -1,13 +1,20 @@
 import { Product } from "../entities/Product";
 import axios from "axios";
+import { EnvVariables } from "../utils/EnvVariables";
 
 class ProductRepository {
   private products: Product[] = [];
+  private env = new EnvVariables()
 
   async update() {
-    this.products = await (
-      await axios.get("https://mockend.com/juunegreiros/BE-test-api/products")
-    ).data;
+    if (this.env.PRODUCTS_SERVER){
+      this.products = await (
+        await axios.get(this.env.PRODUCTS_SERVER)
+      ).data;
+      return
+    }
+
+    console.log("a variável de ambiente PRODUCTS_SERVER não foi definida.")
   }
 
   async getProducts(): Promise<Product[]> {
