@@ -4,11 +4,11 @@
 
 ## Tecnologias
 
-Linguagem: Typescript 4.9.5 / NodeJS 18.13.0
-Gerenciador de dependências: Npm 8.19.2
-Framework: Express 4.18.2
-Framework de testes: Jest 29.4.1
-Conteinerização: Docker 20.10.23
+- Linguagem: Typescript 4.9.5 / NodeJS 18.13.0
+- Gerenciador de dependências: Npm 8.19.2
+- Framework: Express 4.18.2
+- Framework de testes: Jest 29.4.1
+- Conteinerização: Docker 20.10.23
 
 ## Endpoints
 
