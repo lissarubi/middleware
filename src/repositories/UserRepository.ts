@@ -1,13 +1,20 @@
 import { User } from "../entities/User";
 import axios from "axios";
+import { EnvVariables } from "../utils/EnvVariables";
 
 class UserRepository {
   private users: User[] = [];
+  private env = new EnvVariables()
 
   async update() {
-    this.users = await (
-      await axios.get("https://mockend.com/juunegreiros/BE-test-api/users")
-    ).data;
+    if (this.env.USERS_SERVER){
+      this.users = await (
+        await axios.get(this.env.USERS_SERVER)
+      ).data;
+      return
+    }
+
+    console.log("a variável de ambiente USERS_SERVER não foi definida.")
   }
 
   async getUsers(): Promise<User[]> {
