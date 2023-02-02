@@ -20,7 +20,7 @@ class CartController {
     try {
       const user: User | null = await userService.getById(userId);
 
-      if (user == null) {
+      if (!user) {
         return response.status(400).json({
           message: `Não existe uma pessoa usuária com ID ${userId}`,
         });
@@ -36,7 +36,7 @@ class CartController {
         productsIds.map(async (id: string) => {
           const product: Product | null = await productService.getById(id);
 
-          if (product == null) {
+          if (!product) {
             notFoundProducts.push(id);
           } else {
             product.priceWithTax = Number(
