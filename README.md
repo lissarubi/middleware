@@ -112,6 +112,17 @@ Caso algum(s) dos produtos informados não exista, a resposta será um `BadReque
 
 ## Como iniciar
 
+### Variáveis de ambiente
+
+Antes de tudo, o projeto possui duas variáveis de ambiente, a `USERS_SERVER`, e a `PRODUCTS_SERVER`, cada uma sendo referente a um recurso do mockend, e elas devem ser inseridas em um `.env` ou arquivo similar na raiz, ou no comando que executa a API.
+
+Exemplo de `.env`:
+
+```
+USERS_SERVER=https://mockend.com/juunegreiros/BE-test-api/users
+PRODUCTS_SERVER=https://mockend.com/juunegreiros/BE-test-api/products
+```
+
 ### NPM
 
 O projeto pode ser iniciado usando o Npm, com o comando `dev`
@@ -134,7 +145,7 @@ http://localhost:8000
 O projeto também pode ser iniciado usando Docker, com a imagem `lissatransborda/middleware`
 
 ```
-docker run -i -p 8000:8000 lissatransborda/middleware
+docker run -i --env USERS_SERVER=https://mockend.com/juunegreiros/BE-test-api/users --env PRODUCTS_SERVER=https://mockend.com/juunegreiros/BE-test-api/products -p 8000:8000 lissatransborda/middleware
 ```
 
 ## Testes
