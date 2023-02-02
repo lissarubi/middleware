@@ -11,13 +11,11 @@ class ProductRepository {
   }
 
   async getProducts(): Promise<Product[]> {
-    await this.update();
     return this.products;
   }
 
   async getById(id: string): Promise<Product | null> {
-    await this.update();
-    return this.products.filter((product) => product.id == id)[0];
+    return this.products.find(product => product.id == id) ?? null
   }
 
   constructor() {
