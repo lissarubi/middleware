@@ -11,13 +11,11 @@ class UserRepository {
   }
 
   async getUsers(): Promise<User[]> {
-    await this.update();
     return this.users;
   }
 
   async getById(id: string): Promise<User | null> {
-    await this.update();
-    return this.users.filter((user) => user.id == id)[0];
+    return this.users.find(user => user.id == id) ?? null
   }
 
   constructor() {
