@@ -4,6 +4,7 @@ import { EnvVariables } from "../utils/EnvVariables";
 
 class UserRepository {
   private users: User[] = [];
+  private updated: boolean = false
   private env = new EnvVariables()
 
   async update() {
@@ -18,15 +19,21 @@ class UserRepository {
   }
 
   async getUsers(): Promise<User[]> {
+    if (!this.updated){
+      await this.update()
+      this.updated = true
+    }
     return this.users;
   }
 
   async getById(id: string): Promise<User | null> {
-    return this.users.find(user => user.id == id) ?? null
+    return (await this.getUsers()).find(user => user.id == id) ?? null
   }
 
   constructor() {
-    this.update();
+    this.update().then(() => {
+      this.updated = true
+    })
   }
 }
 
