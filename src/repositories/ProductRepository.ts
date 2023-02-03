@@ -4,6 +4,7 @@ import { EnvVariables } from "../utils/EnvVariables";
 
 class ProductRepository {
   private products: Product[] = [];
+  private updated: boolean = false
   private env = new EnvVariables()
 
   async update() {
@@ -18,11 +19,15 @@ class ProductRepository {
   }
 
   async getProducts(): Promise<Product[]> {
+    if (!this.updated){
+      await this.update();
+      this.updated = true
+    }
     return this.products;
   }
 
   async getById(id: string): Promise<Product | null> {
-    return this.products.find(product => product.id == id) ?? null
+    return (await this.getProducts()).find(product => product.id == id) ?? null
   }
 
   constructor() {
